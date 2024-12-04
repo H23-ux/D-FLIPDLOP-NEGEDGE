@@ -9,7 +9,7 @@ To implement  D flipflop using verilog and validating their functionality using 
 Quartus prime
 
 **THEORY**
-
+A D flip-flop (Data or Delay flip-flop) is a type of sequential logic circuit widely used in digital electronics for storing and transferring data. It operates on the principle of clocked storage and ensures that only the value present at its input (D) at the triggering clock edge is transferred to the output (Q).
 **D Flip-Flop**
 
 D flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, D latch operates with enable signal. That means, the output of D flip-flop is insensitive to the changes in the input, D except for active transition of the clock signal. The circuit diagram of D flip-flop is shown in the following figure.
@@ -32,13 +32,25 @@ Next state of D flip-flop is always equal to data input, D for every positive tr
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:24001722
 */
+module d_ff_neg_edge (d, clk, rst, q);
+  input d, clk, rst;
+  output reg q;
+
+  always @(negedge clk or posedge rst) begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else
+      q <= d; // D input is passed to Q on the negative clock edge
+  end
+endmodule
+
 
 **RTL LOGIC FOR FLIPFLOPS**
-
-
+![Screenshot (43)](https://github.com/user-attachments/assets/3b902daa-c570-43a6-a63f-4f4e6293cc9b)
 **TIMING DIGRAMS FOR FLIP FLOPS**
-
+![Screenshot (48)](https://github.com/user-attachments/assets/b8879d0d-cab3-44f6-abfc-5997a30309bb)
 
 **RESULTS**
+Hence the implemention of  D flipflop using verilog and validating their functionality using their functional tables are proved
